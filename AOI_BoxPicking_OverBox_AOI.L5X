@@ -1,0 +1,702 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="34.01" TargetName="AOI_BoxPicking_OverBox" TargetType="AddOnInstructionDefinition" TargetRevision="1.0 " TargetLastEdited="2023-09-03T02:08:49.672Z" ContainsContext="true" ExportDate="Sun Sep 03 09:09:41 2023" ExportOptions="References NoRawData L5KData DecoratedData Context Dependencies ForceProtectedEncoding AllProjDocTrans">
+<Controller Use="Context" Name="PLC_Yaskawa">
+<DataTypes Use="Context">
+</DataTypes>
+<AddOnInstructionDefinitions Use="Context">
+<AddOnInstructionDefinition Use="Target" Name="AOI_BoxPicking_OverBox" Revision="1.0" ExecutePrescan="false" ExecutePostscan="false" ExecuteEnableInFalse="false" CreatedDate="2022-09-08T01:40:53.126Z" CreatedBy="LAPTOP-FCQ975ME\IRA" EditedDate="2023-09-03T02:08:49.672Z" EditedBy="DESKTOP-PHAJVOM\IRA" SoftwareRevision="v34.01"
+>
+<Parameters>
+<Parameter Name="EnableIn" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Input - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="EnableOut" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Output - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="inp_bEnable" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="inp_ByPass" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="inp_ForcePick" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="inp_bSensorCheck1" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="inp_bSensorCheck2" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="inp_bSensorCheck3" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="inp_bSensorCheck4" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="inp_bRobotFeedbackPick" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="inp_bRobotFeedbackMovePick" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="inp_IntQtyReqBox" TagType="Base" DataType="INT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="inp_tCheckProduct" TagType="Base" DataType="INT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="inp_bResetSeq" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="out_bStatusBusy" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read Only">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="out_bTriggerMotor" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read Only">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="out_bRobotTriggerPick2" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="true" Visible="true" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="out_bRobotTriggerPick3" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="true" Visible="true" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="out_bRobotTriggerPick4" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="true" Visible="true" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="out_qtyBox" TagType="Base" DataType="DINT" Usage="Output" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read Only">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="out_bErrorOverBox" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read Only">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+</Parameters>
+<LocalTags>
+<LocalTag Name="SeqIndex" DataType="INT" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="TmrCheck1" DataType="FBD_TIMER" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[[1,0,0,0,0,0,0,0,0,4,0,0]]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<Structure DataType="FBD_TIMER">
+<DataValueMember Name="EnableIn" DataType="BOOL" Value="1"/>
+<DataValueMember Name="TimerEnable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Reset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="EnableOut" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Status" DataType="DINT" Radix="Hex" Value="16#0000_0000"/>
+<DataValueMember Name="InstructFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PresetInv" DataType="BOOL" Value="0"/>
+</Structure>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="TmrCheck2" DataType="FBD_TIMER" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[[1,0,0,0,0,0,0,0,0,4,0,0]]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<Structure DataType="FBD_TIMER">
+<DataValueMember Name="EnableIn" DataType="BOOL" Value="1"/>
+<DataValueMember Name="TimerEnable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Reset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="EnableOut" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Status" DataType="DINT" Radix="Hex" Value="16#0000_0000"/>
+<DataValueMember Name="InstructFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PresetInv" DataType="BOOL" Value="0"/>
+</Structure>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="TmrCheck3" DataType="FBD_TIMER" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[[1,0,0,0,0,0,0,0,0,4,0,0]]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<Structure DataType="FBD_TIMER">
+<DataValueMember Name="EnableIn" DataType="BOOL" Value="1"/>
+<DataValueMember Name="TimerEnable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Reset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="EnableOut" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Status" DataType="DINT" Radix="Hex" Value="16#0000_0000"/>
+<DataValueMember Name="InstructFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PresetInv" DataType="BOOL" Value="0"/>
+</Structure>
+</DefaultData>
+</LocalTag>
+</LocalTags>
+<Routines>
+<Routine Name="Logic" Type="ST">
+<STContent>
+<Line Number="0">
+<![CDATA[IF inp_bEnable AND NOT inp_ByPass THEN]]>
+</Line>
+<Line Number="1">
+<![CDATA[	TONR(TmrCheck1); TONR(TmrCheck2); TONR(TmrCheck3);]]>
+</Line>
+<Line Number="2">
+<![CDATA[	IF inp_ForcePick THEN]]>
+</Line>
+<Line Number="3">
+<![CDATA[		SeqIndex := 50;]]>
+</Line>
+<Line Number="4">
+<![CDATA[	END_IF;]]>
+</Line>
+<Line Number="5">
+<![CDATA[	]]>
+</Line>
+<Line Number="6">
+<![CDATA[	CASE SeqIndex OF]]>
+</Line>
+<Line Number="7">
+<![CDATA[		0:]]>
+</Line>
+<Line Number="8">
+<![CDATA[			out_bTriggerMotor := 0;]]>
+</Line>
+<Line Number="9">
+<![CDATA[			out_bStatusBusy := 1;]]>
+</Line>
+<Line Number="10">
+<![CDATA[			TmrCheck1.Reset:=1; TmrCheck1.TimerEnable:=0;]]>
+</Line>
+<Line Number="11">
+<![CDATA[	        SeqIndex := 10;]]>
+</Line>
+<Line Number="12">
+<![CDATA[			]]>
+</Line>
+<Line Number="13">
+<![CDATA[	  	10:]]>
+</Line>
+<Line Number="14">
+<![CDATA[	        IF  inp_bSensorCheck1 AND  inp_bSensorCheck2 AND  inp_bSensorCheck3 AND  inp_bSensorCheck4 AND inp_IntQtyReqBox = 4 THEN]]>
+</Line>
+<Line Number="15">
+<![CDATA[				TmrCheck2.Reset:=1; TmrCheck2.TimerEnable:=0;]]>
+</Line>
+<Line Number="16">
+<![CDATA[				TmrCheck3.Reset:=1; TmrCheck3.TimerEnable:=0;]]>
+</Line>
+<Line Number="17">
+<![CDATA[	            TmrCheck1.PRE:= inp_tCheckProduct; TmrCheck1.Reset:=0; TmrCheck1.TimerEnable:=1;]]>
+</Line>
+<Line Number="18">
+<![CDATA[		        IF TmrCheck1.DN THEN]]>
+</Line>
+<Line Number="19">
+<![CDATA[					out_bTriggerMotor := 0;]]>
+</Line>
+<Line Number="20">
+<![CDATA[					TmrCheck1.Reset:=1; TmrCheck1.TimerEnable:=0;]]>
+</Line>
+<Line Number="21">
+<![CDATA[	                SeqIndex := 40;]]>
+</Line>
+<Line Number="22">
+<![CDATA[	            END_IF;]]>
+</Line>
+<Line Number="23">
+<![CDATA[			ELSIF  inp_bSensorCheck1 AND  inp_bSensorCheck2 AND  inp_bSensorCheck3 AND inp_IntQtyReqBox = 3 THEN]]>
+</Line>
+<Line Number="24">
+<![CDATA[				TmrCheck1.Reset:=1; TmrCheck1.TimerEnable:=0;]]>
+</Line>
+<Line Number="25">
+<![CDATA[				TmrCheck2.Reset:=1; TmrCheck2.TimerEnable:=0;]]>
+</Line>
+<Line Number="26">
+<![CDATA[	            TmrCheck3.PRE:= inp_tCheckProduct; TmrCheck3.Reset:=0; TmrCheck3.TimerEnable:=1;]]>
+</Line>
+<Line Number="27">
+<![CDATA[		        IF TmrCheck3.DN THEN]]>
+</Line>
+<Line Number="28">
+<![CDATA[					IF NOT inp_bSensorCheck4 THEN]]>
+</Line>
+<Line Number="29">
+<![CDATA[						out_bErrorOverBox := 0;]]>
+</Line>
+<Line Number="30">
+<![CDATA[						out_bTriggerMotor := 0;]]>
+</Line>
+<Line Number="31">
+<![CDATA[						TmrCheck3.Reset:=1; TmrCheck3.TimerEnable:=0;]]>
+</Line>
+<Line Number="32">
+<![CDATA[		                SeqIndex := 30;]]>
+</Line>
+<Line Number="33">
+<![CDATA[					else]]>
+</Line>
+<Line Number="34">
+<![CDATA[						out_bErrorOverBox := 1;]]>
+</Line>
+<Line Number="35">
+<![CDATA[					end_if;]]>
+</Line>
+<Line Number="36">
+<![CDATA[	            END_IF;]]>
+</Line>
+<Line Number="37">
+<![CDATA[			ELSIF  inp_bSensorCheck1 AND  inp_bSensorCheck2 AND inp_IntQtyReqBox = 2 THEN]]>
+</Line>
+<Line Number="38">
+<![CDATA[				TmrCheck1.Reset:=1; TmrCheck1.TimerEnable:=0;]]>
+</Line>
+<Line Number="39">
+<![CDATA[				TmrCheck3.Reset:=1; TmrCheck3.TimerEnable:=0;]]>
+</Line>
+<Line Number="40">
+<![CDATA[	            TmrCheck2.PRE:= inp_tCheckProduct; TmrCheck2.Reset:=0; TmrCheck2.TimerEnable:=1;]]>
+</Line>
+<Line Number="41">
+<![CDATA[		        IF TmrCheck2.DN THEN]]>
+</Line>
+<Line Number="42">
+<![CDATA[					out_bTriggerMotor := 0;]]>
+</Line>
+<Line Number="43">
+<![CDATA[					TmrCheck2.Reset:=1; TmrCheck2.TimerEnable:=0;]]>
+</Line>
+<Line Number="44">
+<![CDATA[	                SeqIndex := 20;]]>
+</Line>
+<Line Number="45">
+<![CDATA[	            END_IF;]]>
+</Line>
+<Line Number="46">
+<![CDATA[	        ELSE]]>
+</Line>
+<Line Number="47">
+<![CDATA[				out_bTriggerMotor := 1;]]>
+</Line>
+<Line Number="48">
+<![CDATA[				out_bStatusBusy := 0;]]>
+</Line>
+<Line Number="49">
+<![CDATA[	            TmrCheck1.Reset:=1; TmrCheck1.TimerEnable:=0;]]>
+</Line>
+<Line Number="50">
+<![CDATA[				TmrCheck2.Reset:=1; TmrCheck2.TimerEnable:=0;]]>
+</Line>
+<Line Number="51">
+<![CDATA[				TmrCheck3.Reset:=1; TmrCheck3.TimerEnable:=0;]]>
+</Line>
+<Line Number="52">
+<![CDATA[	        END_IF;]]>
+</Line>
+<Line Number="53">
+<![CDATA[		20:]]>
+</Line>
+<Line Number="54">
+<![CDATA[			out_bTriggerMotor := 0;]]>
+</Line>
+<Line Number="55">
+<![CDATA[			out_bStatusBusy := 1;]]>
+</Line>
+<Line Number="56">
+<![CDATA[			out_bRobotTriggerPick2 := 1;]]>
+</Line>
+<Line Number="57">
+<![CDATA[			out_bRobotTriggerPick3 := 0;]]>
+</Line>
+<Line Number="58">
+<![CDATA[			out_bRobotTriggerPick4 := 0;]]>
+</Line>
+<Line Number="59">
+<![CDATA[			IF inp_bRobotFeedbackPick THEN ]]>
+</Line>
+<Line Number="60">
+<![CDATA[				SeqIndex := 100;]]>
+</Line>
+<Line Number="61">
+<![CDATA[			ELSIF  NOT inp_bSensorCheck1 OR NOT  inp_bSensorCheck2 THEN]]>
+</Line>
+<Line Number="62">
+<![CDATA[				TmrCheck1.PRE:= 3000; TmrCheck1.Reset:=0; TmrCheck1.TimerEnable:=1;]]>
+</Line>
+<Line Number="63">
+<![CDATA[		        IF TmrCheck1.DN THEN]]>
+</Line>
+<Line Number="64">
+<![CDATA[					TmrCheck1.Reset:=1; TmrCheck1.TimerEnable:=0;]]>
+</Line>
+<Line Number="65">
+<![CDATA[					SeqIndex := 100;]]>
+</Line>
+<Line Number="66">
+<![CDATA[				END_IF;]]>
+</Line>
+<Line Number="67">
+<![CDATA[			END_IF;]]>
+</Line>
+<Line Number="68">
+<![CDATA[		30:]]>
+</Line>
+<Line Number="69">
+<![CDATA[			out_bTriggerMotor := 0;]]>
+</Line>
+<Line Number="70">
+<![CDATA[			out_bStatusBusy := 1;]]>
+</Line>
+<Line Number="71">
+<![CDATA[			out_bRobotTriggerPick2 := 1;]]>
+</Line>
+<Line Number="72">
+<![CDATA[			out_bRobotTriggerPick3 := 1;]]>
+</Line>
+<Line Number="73">
+<![CDATA[			out_bRobotTriggerPick4 := 0;]]>
+</Line>
+<Line Number="74">
+<![CDATA[			IF inp_bRobotFeedbackPick THEN ]]>
+</Line>
+<Line Number="75">
+<![CDATA[				SeqIndex := 100;]]>
+</Line>
+<Line Number="76">
+<![CDATA[			ELSIF  NOT inp_bSensorCheck1 OR NOT  inp_bSensorCheck2 OR NOT  inp_bSensorCheck3 THEN]]>
+</Line>
+<Line Number="77">
+<![CDATA[				TmrCheck1.PRE:= 3000; TmrCheck1.Reset:=0; TmrCheck1.TimerEnable:=1;]]>
+</Line>
+<Line Number="78">
+<![CDATA[		        IF TmrCheck1.DN THEN]]>
+</Line>
+<Line Number="79">
+<![CDATA[					TmrCheck1.Reset:=1; TmrCheck1.TimerEnable:=0;]]>
+</Line>
+<Line Number="80">
+<![CDATA[					SeqIndex := 100;]]>
+</Line>
+<Line Number="81">
+<![CDATA[				END_IF;]]>
+</Line>
+<Line Number="82">
+<![CDATA[			END_IF;			]]>
+</Line>
+<Line Number="83">
+<![CDATA[		40:]]>
+</Line>
+<Line Number="84">
+<![CDATA[			out_bTriggerMotor := 0;]]>
+</Line>
+<Line Number="85">
+<![CDATA[			out_bStatusBusy := 1;]]>
+</Line>
+<Line Number="86">
+<![CDATA[			out_bRobotTriggerPick2 := 1;]]>
+</Line>
+<Line Number="87">
+<![CDATA[			out_bRobotTriggerPick3 := 1;]]>
+</Line>
+<Line Number="88">
+<![CDATA[			out_bRobotTriggerPick4 := 1;]]>
+</Line>
+<Line Number="89">
+<![CDATA[			IF inp_bRobotFeedbackPick THEN ]]>
+</Line>
+<Line Number="90">
+<![CDATA[				SeqIndex := 100;]]>
+</Line>
+<Line Number="91">
+<![CDATA[			ELSIF  NOT inp_bSensorCheck1 OR NOT  inp_bSensorCheck2 OR NOT  inp_bSensorCheck3 OR NOT  inp_bSensorCheck4 THEN]]>
+</Line>
+<Line Number="92">
+<![CDATA[				TmrCheck1.PRE:= 3000; TmrCheck1.Reset:=0; TmrCheck1.TimerEnable:=1;]]>
+</Line>
+<Line Number="93">
+<![CDATA[		        IF TmrCheck1.DN THEN]]>
+</Line>
+<Line Number="94">
+<![CDATA[					TmrCheck1.Reset:=1; TmrCheck1.TimerEnable:=0;]]>
+</Line>
+<Line Number="95">
+<![CDATA[					SeqIndex := 100;]]>
+</Line>
+<Line Number="96">
+<![CDATA[				END_IF;]]>
+</Line>
+<Line Number="97">
+<![CDATA[			END_IF;]]>
+</Line>
+<Line Number="98">
+<![CDATA[		50:]]>
+</Line>
+<Line Number="99">
+<![CDATA[			IF  inp_bSensorCheck1 AND  inp_bSensorCheck2 AND  inp_bSensorCheck3 AND  inp_bSensorCheck4 THEN]]>
+</Line>
+<Line Number="100">
+<![CDATA[				out_qtyBox := 4;]]>
+</Line>
+<Line Number="101">
+<![CDATA[				SeqIndex := 60;]]>
+</Line>
+<Line Number="102">
+<![CDATA[			ELSIF  inp_bSensorCheck1 AND  inp_bSensorCheck2 AND  inp_bSensorCheck3 THEN]]>
+</Line>
+<Line Number="103">
+<![CDATA[				out_qtyBox := 3;]]>
+</Line>
+<Line Number="104">
+<![CDATA[				SeqIndex := 60;]]>
+</Line>
+<Line Number="105">
+<![CDATA[			ELSIF  inp_bSensorCheck1 AND  inp_bSensorCheck2 THEN]]>
+</Line>
+<Line Number="106">
+<![CDATA[				out_qtyBox := 2;]]>
+</Line>
+<Line Number="107">
+<![CDATA[				SeqIndex := 60;]]>
+</Line>
+<Line Number="108">
+<![CDATA[			ELSIF  inp_bSensorCheck1 THEN]]>
+</Line>
+<Line Number="109">
+<![CDATA[				out_qtyBox := 1;]]>
+</Line>
+<Line Number="110">
+<![CDATA[				SeqIndex := 60;]]>
+</Line>
+<Line Number="111">
+<![CDATA[			END_IF;]]>
+</Line>
+<Line Number="112">
+<![CDATA[		60:]]>
+</Line>
+<Line Number="113">
+<![CDATA[			out_bTriggerMotor := 0;]]>
+</Line>
+<Line Number="114">
+<![CDATA[			out_bStatusBusy := 1;]]>
+</Line>
+<Line Number="115">
+<![CDATA[			out_bRobotTriggerPick2 := 1;]]>
+</Line>
+<Line Number="116">
+<![CDATA[			out_bRobotTriggerPick3 := 1;]]>
+</Line>
+<Line Number="117">
+<![CDATA[			out_bRobotTriggerPick4 := 1;]]>
+</Line>
+<Line Number="118">
+<![CDATA[			IF inp_bRobotFeedbackPick OR NOT inp_bSensorCheck1  THEN ]]>
+</Line>
+<Line Number="119">
+<![CDATA[				out_qtyBox := 0;]]>
+</Line>
+<Line Number="120">
+<![CDATA[				SeqIndex := 100;]]>
+</Line>
+<Line Number="121">
+<![CDATA[			END_IF;]]>
+</Line>
+<Line Number="122">
+<![CDATA[	    100:]]>
+</Line>
+<Line Number="123">
+<![CDATA[			out_bRobotTriggerPick2 := 0;]]>
+</Line>
+<Line Number="124">
+<![CDATA[			out_bRobotTriggerPick3 := 0;]]>
+</Line>
+<Line Number="125">
+<![CDATA[			out_bRobotTriggerPick4 := 0;]]>
+</Line>
+<Line Number="126">
+<![CDATA[	        IF NOT inp_bRobotFeedbackPick THEN]]>
+</Line>
+<Line Number="127">
+<![CDATA[				TmrCheck1.PRE:= 1000; TmrCheck1.Reset:=0; TmrCheck1.TimerEnable:=1;]]>
+</Line>
+<Line Number="128">
+<![CDATA[		        IF TmrCheck1.DN THEN]]>
+</Line>
+<Line Number="129">
+<![CDATA[					TmrCheck1.Reset:=1; TmrCheck1.TimerEnable:=0;]]>
+</Line>
+<Line Number="130">
+<![CDATA[		            SeqIndex := 10;]]>
+</Line>
+<Line Number="131">
+<![CDATA[				END_IF;]]>
+</Line>
+<Line Number="132">
+<![CDATA[	        END_IF;]]>
+</Line>
+<Line Number="133">
+<![CDATA[					]]>
+</Line>
+<Line Number="134">
+<![CDATA[	END_CASE;]]>
+</Line>
+<Line Number="135">
+<![CDATA[ELSE]]>
+</Line>
+<Line Number="136">
+<![CDATA[	out_bErrorOverBox := 0;]]>
+</Line>
+<Line Number="137">
+<![CDATA[    out_bStatusBusy := 1;]]>
+</Line>
+<Line Number="138">
+<![CDATA[    out_bTriggerMotor := 0;]]>
+</Line>
+<Line Number="139">
+<![CDATA[	out_bRobotTriggerPick2 := 0;]]>
+</Line>
+<Line Number="140">
+<![CDATA[	out_bRobotTriggerPick3 := 0;]]>
+</Line>
+<Line Number="141">
+<![CDATA[	out_bRobotTriggerPick4 := 0;]]>
+</Line>
+<Line Number="142">
+<![CDATA[    TmrCheck1.Reset:=1; TmrCheck1.TimerEnable:=0;]]>
+</Line>
+<Line Number="143">
+<![CDATA[	TmrCheck2.Reset:=1; TmrCheck2.TimerEnable:=0;]]>
+</Line>
+<Line Number="144">
+<![CDATA[	TmrCheck3.Reset:=1; TmrCheck3.TimerEnable:=0;]]>
+</Line>
+<Line Number="145">
+<![CDATA[	IF inp_bResetSeq OR inp_ByPass THEN]]>
+</Line>
+<Line Number="146">
+<![CDATA[		SeqIndex := 0;]]>
+</Line>
+<Line Number="147">
+<![CDATA[	END_IF;]]>
+</Line>
+<Line Number="148">
+<![CDATA[END_IF;]]>
+</Line>
+</STContent>
+</Routine>
+</Routines>
+</AddOnInstructionDefinition>
+</AddOnInstructionDefinitions>
+</Controller>
+</RSLogix5000Content>
